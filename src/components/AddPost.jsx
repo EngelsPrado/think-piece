@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { firestore,auth } from '../firebase';
+import React, { Component } from "react";
+import { firestore, auth } from "../firebase";
 class AddPost extends Component {
-  state = { title: '', content: '' };
+  state = { title: "", content: "" };
 
   handleChange = event => {
     const { name, value } = event.target;
@@ -12,7 +12,7 @@ class AddPost extends Component {
     event.preventDefault();
 
     const { title, content } = this.state;
-     const u=auth.currentUser;
+    const u = auth.currentUser;
     const post = {
       title,
       content,
@@ -20,21 +20,21 @@ class AddPost extends Component {
         uid: u.uid,
         displayName: u.displayName,
         email: u.email,
-        photoURL: u.photoURL,
+        photoURL: u.photoURL
       },
       favorites: 0,
       comments: 0,
-      createdAt: new Date(),
-    }
-  
-    firestore.collection('posts').add(post); // NEW
-  
-    this.setState({ title: '', content: '' });
+      createdAt: new Date()
+    };
+
+    firestore.collection("posts").add(post); // NEW
+
+    this.setState({ title: "", content: "" });
   };
 
   render() {
     const { title, content } = this.state;
-    console.log(auth)
+    console.log(auth);
     return (
       <form onSubmit={this.handleSubmit} className="AddPost">
         <input

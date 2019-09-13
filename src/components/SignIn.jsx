@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import { signInWithGoogle } from '../firebase';
+=======
+>>>>>>> 5de4ac1a8265642f074fc634045064088fcae714
 
 class SignIn extends Component {
   state = { email: '', password: '' };
@@ -37,7 +40,11 @@ class SignIn extends Component {
           onChange={this.handleChange}
         />
         <input type="submit" value="Sign In" />
+<<<<<<< HEAD
         <button onClick={signInWithGoogle}>Sign In With Google</button>
+=======
+        <button>Sign In With Google</button>
+>>>>>>> 5de4ac1a8265642f074fc634045064088fcae714
       </form>
     );
   }
