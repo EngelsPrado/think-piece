@@ -1,15 +1,8 @@
-<<<<<<< HEAD
 import React, { Component } from "react";
 import { auth, createUserDocument } from "../firebase";
 import { Formik } from "formik";
 class SignUp extends Component {
   state = { displayName: "", email: "", password: "" };
-=======
-import React, { Component } from 'react';
-
-class SignUp extends Component {
-  state = { displayName: '', email: '', password: '' };
->>>>>>> 5de4ac1a8265642f074fc634045064088fcae714
 
   handleChange = event => {
     const { name, value } = event.target;
@@ -17,7 +10,6 @@ class SignUp extends Component {
     this.setState({ [name]: value });
   };
 
-<<<<<<< HEAD
   handleSubmit = async ({ displayName, email, password }) => {
     //const { email, password, displayName } = this.state;
     try {
@@ -25,7 +17,7 @@ class SignUp extends Component {
         email,
         password
       );
-
+      console.log(displayName);
       createUserDocument(user, { displayName });
     } catch (error) {
       alert(error);
@@ -37,7 +29,7 @@ class SignUp extends Component {
   render() {
     return (
       <Formik
-        initialValues={{ email: "", password: "" }}
+        initialValues={{ displayName: "", password: "", email: "" }}
         validate={values => {
           let errors = {};
           if (!values.email) {
@@ -70,7 +62,7 @@ class SignUp extends Component {
               name="displayName"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.email}
+              value={values.displayName}
             />
             <input
               type="email"
@@ -94,43 +86,6 @@ class SignUp extends Component {
           </form>
         )}
       </Formik>
-=======
-  handleSubmit = event => {
-    event.preventDefault();
-
-    this.setState({ displayName: '', email: '', password: '' });
-  };
-
-  render() {
-    const { displayName, email, password } = this.state;
-
-    return (
-      <form className="SignUp" onSubmit={this.handleSubmit}>
-        <h2>Sign Up</h2>
-        <input
-          type="text"
-          name="displayName"
-          placeholder="Display Name"
-          value={displayName}
-          onChange={this.handleChange}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={email}
-          onChange={this.handleChange}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={this.handleChange}
-        />
-        <input type="submit" value="Sign Up" />
-      </form>
->>>>>>> 5de4ac1a8265642f074fc634045064088fcae714
     );
   }
 }

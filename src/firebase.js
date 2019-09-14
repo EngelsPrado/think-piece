@@ -61,7 +61,7 @@ export const getUserDocument = async uid => {
       .collection("users")
       .doc(uid)
       .get();
-
+    console.log(userDocument);
     return { uid, ...userDocument.data() };
   } catch (error) {
     console.error("Error fetching user", error.message);

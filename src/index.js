@@ -1,10 +1,11 @@
 import React from "react";
 import { render } from "react-dom";
 import { ThemeProvider, ColorMode } from "theme-ui";
-// import './index.scss';
+import "./index.scss";
 
 import Application from "./components/Application";
-
+import PostsProvider from "./providers/PostsProvider";
+import UserProvider from "./providers/UserProvider";
 const theme = {
   fonts: {
     body: "system-ui, sans-serif",
@@ -58,11 +59,11 @@ const theme = {
     }
   }
 };
-
 render(
-  <ThemeProvider theme={theme}>
-    <ColorMode />
-    <Application />
-  </ThemeProvider>,
+  <UserProvider>
+    <PostsProvider>
+      <Application />
+    </PostsProvider>
+  </UserProvider>,
   document.getElementById("root")
 );
